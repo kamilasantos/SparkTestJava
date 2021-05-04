@@ -22,16 +22,27 @@ public class sparkTestJava {
         
         System.out.println(dataframe.first().getString(1));
         
-        dataframe.select("Loan Status").distinct.[].collect(); //Returns the distinct possible values of "Loan Status"
+        dataframe.select("Loan.Status").distinct.[].collect(); //Returns the distinct possible values of "Loan Status"
         
         System.out.println(dataframe.select("Loan_Status").distinct.[].collect());
         
         //Data Preparation
         
-        dataframe.drop("Loan.ID","Customer.ID");
-        
-        System.out.println(dataframe.drop("Loan.ID","Customer.ID"));
-        
+       var df2 = dataframe.drop("Loan.ID","Customer.ID"); //Delete the columns Loan.ID and Customer.ID
+
+       var df3 = df2.filter(df2("Open.Credit") < "10000" && df2("Annual.Income") < "7000000").show(false); //Filtering DataSet (Now using the filtered DataSet)
+
+       var df4 = df3.filter(df3("Current.Loan.Amount") < "20000000"); //Keep only data that have Current.Loan.Amount < 20000000
+
+       var df5 = df4.na.drop("any").show(false);
+
+       var df6 = df5.count();
+
+       var df7 = len(df5.columns);
+
+       System.out.println(df6);
+       System.out.println(df7);
+
         
         }
 }
