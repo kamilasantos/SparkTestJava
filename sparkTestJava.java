@@ -6,7 +6,7 @@ public class sparkTestJava {
         
         //Data Understanding
         
-        Dataset<Row> dataframe = session.read().csv("C/Users/kamis/Downloads/bank_loan.csv");
+        Dataset<Row> dataframe = session.read().csv("C:/bank_loan.csv");
         
         System.out.println(dataframe.schema());
         
